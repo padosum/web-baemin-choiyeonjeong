@@ -1,5 +1,36 @@
 extends layout 
 
 block content 
-    h1= title 
-    p welcome to #{title}
+  link(rel="stylesheet", href="/stylesheets/login.css")
+  div.wrapper
+    div.login-wrapper
+      main
+        a.cancel-wrapper(href="/")
+          img.cancel(src="/images/cancel.png")
+        form.form-login
+          fieldset.field-login
+            legend.hidden="배달의민족 로그인 폼"
+            input.input-login(type="text" placeholder="아이디 또는 이메일")
+            input.input-login(type="passoword" placeholder="비밀번호")
+          button.button-login(type="submit" value="로그인")="로그인"
+        div.info-user
+          span
+            a(href="#")="아이디 찾기"
+          span
+            a(href="#")="비밀번호 찾기"
+      footer
+        div.sns-login-wrapper
+          a.sns-login-anchor
+            img.sns(src='/images/facebook.png')
+            p='페이스북으로 로그인'
+          a.sns-login-anchor
+            img.sns(src='/images/naver.png')
+            p='네이버로 로그인'
+          a.sns-login-anchor
+            img.sns(src='/images/apple.png')
+            p="Apple로 로그인"
+
+        div.information 
+          span="혹시, 배달의민족이 처음이신가요?"
+          a.join(href="/join/agree")="회원가입"
+            
