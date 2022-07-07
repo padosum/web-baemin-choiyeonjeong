@@ -1,4 +1,4 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
 
 router.get("/agree", (req, res, next) => {
@@ -13,4 +13,4 @@ router.get("/details", (req, res, next) => {
   res.render("details", { title: "회원가입" });
 });
 
-module.exports = router;
+export { router as joinRouter };

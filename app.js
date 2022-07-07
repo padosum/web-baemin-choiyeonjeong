@@ -1,16 +1,23 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+// var createError = require("http-errors");
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const createError = require("http-errors");
+import express from "express";
+import path from "path";
+import cookieParser from "cookie-parser";
+import logger from "morgan";
+import { fileURLToPath } from "url";
 
-const indexRouter = require("./routes/index");
-const loginRouter = require("./routes/login");
-const joinRouter = require("./routes/join");
+import { indexRouter } from "./routes/index.js";
+import { loginRouter } from "./routes/login.js";
+import { joinRouter } from "./routes/join.js";
+import { authRouter } from "./routes/auth.js";
 
 var app = express();
 
 // view engine setup
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
@@ -19,6 +26,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use("/db", express.static(path.join(__dirname, "db")));
 
 app.use("/", indexRouter);
 app.use("/login", loginRouter);
@@ -28,6 +36,7 @@ app.post("/login_check", (req, res) => {
   res.send(`id : ${id}, pw: ${pw}`);
 });
 app.use("/join", joinRouter);
+app.use("/auth", authRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -45,4 +54,6 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-module.exports = app;
+app.listen("3000", () => {
+  console.log("Start App");
+});

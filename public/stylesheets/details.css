@@ -22,10 +22,14 @@ header img.left {
 }
 
 header .complete-btn {
-  position: absolute;
   cursor: pointer;
+  position: absolute;
+  padding: 0;
+  border: none;
+  background: none;
+  outline: none;
   right: 0;
-  color: #d7d7d7;
+  /* color: #d7d7d7; */
 }
 
 .join-detail .input-wrapper {

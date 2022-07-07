@@ -8,9 +8,9 @@ block content
             header
                 img.left(src="/images/arrow-left.svg")
                 h1.title=title 
-                span.complete-btn="완료"
+                button.complete-btn(type="button")="완료"
             section.join-detail 
-                form(action="/join" method="POST") 
+                form(action="/auth/register_process" method="POST") 
                     div.input-wrapper 
                         label.email-label(for="email")="이메일"
                             div.email-input-wrapper 
@@ -31,4 +31,4 @@ block content
                             input.user-birth(name="birth" id="birth" placeholder="예시) 2000.01.01")
                             p.invalid-message 
                             span.check-mark
-            
+    script(src="/javascripts/details.js")
