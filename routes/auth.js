@@ -1,22 +1,11 @@
 import express from "express";
-import path from "path";
-import { Low, JSONFile } from "lowdb";
-import { fileURLToPath } from "url";
+import db from "../db/db.js";
 
 const router = express.Router();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(path.basename(__filename));
-const file = path.join(__dirname, "db", "db.json");
-const adapter = new JSONFile(file);
-const db = new Low(adapter);
-
 router.post("/register_process", async (req, res, next) => {
-  const post = req.body;
-  const email = post.email;
-  const password = post.password;
-  const nickname = post.nickname;
-  const birth = post.birth;
+  const { body: user } = req;
+  const { email, password, nickname, birth } = user;
 
   await db.read();
 
@@ -33,4 +22,4 @@ router.post("/register_process", async (req, res, next) => {
   res.sendStatus(200);
 });
 
-export { router as authRouter };
+export default router;

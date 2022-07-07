@@ -13,4 +13,4 @@ router.get("/details", (req, res, next) => {
   res.render("details", { title: "회원가입" });
 });
 
-export { router as joinRouter };
+export default router;
