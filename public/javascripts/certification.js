@@ -14,12 +14,29 @@ const handlePhoneInputHyphen = (e) => {
 
 function inputEl($page, name) {
   this.$target = $page.querySelector(name);
+
+  const cancelBtn = document.createElement("button");
+  const cancelIcon = document.createElement("img");
+
+  cancelIcon.src = "/images/cancel-circle.png";
+  cancelBtn.classList.add("cancel");
+  cancelBtn.appendChild(cancelIcon);
+
+  this.$target.parentNode.insertBefore(cancelBtn, this.$target.nextSibling);
+
   this.init = () => {
     initEventListeners();
   };
 
   const initEventListeners = () => {
     this.$target.addEventListener("focus", handleInputFocusChange);
+
+    cancelBtn.addEventListener("click", (e) => {
+      if (e.target.closest(".cancel")) {
+        this.$target.value = "";
+        return;
+      }
+    });
   };
 
   this.setEvent = (type, listener) => {
@@ -44,6 +61,11 @@ function certificationPage($target) {
 
     $target.addEventListener("click", (e) => {
       if (e.target.tagName === "INPUT") {
+        return;
+      }
+
+      if (e.target.closest(".cancel")) {
+        e.target.closest("input[type='text']").value = "";
         return;
       }
       for (const input of inputs) {

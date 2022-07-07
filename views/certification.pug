@@ -16,9 +16,6 @@ block content
                       div.title="휴대전화"
                       div.field
                         input(type="text" id="phone" name="phone" placeholder="전화번호를 입력해주세요" maxlength="13")
-                        button.cancel(type="button")
-                            img(src="/images/cancel-circle.png")
-
                     button.send-number(type="submit")="인증번호 받기"
 
                 div.certification-number
@@ -26,8 +23,6 @@ block content
                         div.title="인증번호"
                         div.field
                             input(type="text" id="cNumber" name="cNumber" placeholder="인증번호를 입력해주세요" maxlength="4")
-                            button.cancel(type="button")
-                                img(src="/images/cancel-circle.png")
                     button.resend="인증번호 다시받기"
 
     script(src="/javascripts/certification.js")
