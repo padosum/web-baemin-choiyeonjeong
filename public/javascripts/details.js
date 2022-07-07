@@ -46,11 +46,19 @@ function DetailsPage($target) {
         },
         body: JSON.stringify({
           email: inputEmal.getValue(),
-          pwd: inputNickname.getValue(),
           nickname: inputNickname.getValue(),
+          password: inputPassword.getValue(),
           birth: inputBirth.getValue(),
         }),
-      });
+      })
+        .then((res) => {
+          if (res.status === 200) {
+            window.location = "/";
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     });
   };
 }

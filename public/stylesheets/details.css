@@ -81,6 +81,18 @@ header .complete-btn {
   flex: 1;
 }
 
+.join-detail .email-input-wrapper .cancel {
+  /* position: absolute; */
+  left: 10px;
+  width: 16px;
+  height: 16px;
+}
+
+.join-detail .email-input-wrapper .cancel img {
+  width: 100%;
+  height: 100%;
+}
+
 .join-detail .email-input-wrapper .validate-btn {
   border: 1px solid #d7d7d7;
   padding: 0.5rem 1rem;

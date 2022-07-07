@@ -1,0 +1,10 @@
+{
+  "users": [
+    {
+      "email": "woowa@woowafriends.com",
+      "password": "qweqweqwqe",
+      "nickname": "woowa",
+      "birth": "2000.01.01"
+    }
+  ]
+}

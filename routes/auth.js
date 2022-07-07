@@ -14,7 +14,7 @@ const db = new Low(adapter);
 router.post("/register_process", async (req, res, next) => {
   const post = req.body;
   const email = post.email;
-  const pwd = post.pwd;
+  const password = post.password;
   const nickname = post.nickname;
   const birth = post.birth;
 
@@ -24,13 +24,13 @@ router.post("/register_process", async (req, res, next) => {
 
   db.data.users.push({
     email,
-    pwd,
+    password,
     nickname,
     birth,
   });
 
   await db.write();
-  res.redirect("/");
+  res.sendStatus(200);
 });
 
 export { router as authRouter };
