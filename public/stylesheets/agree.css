@@ -173,3 +173,7 @@ button.next {
   font-size: 15px;
   font-weight: 600;
 }
+
+button.next.enable {
+  background-color: var(--primary-color);
+}
