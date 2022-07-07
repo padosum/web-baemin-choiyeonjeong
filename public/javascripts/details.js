@@ -6,6 +6,10 @@ const handleInputBlur = (e) => {
   e.target.closest("label").classList.remove("focus");
 };
 
+const handleMouseDown = (e) => {
+  e.preventDefault();
+};
+
 function InputEl($page, selector) {
   this.$target = $page.querySelector(selector);
 
@@ -23,8 +27,19 @@ function InputEl($page, selector) {
     this.initEventListeners();
   };
 
+  this.removeFocusClass = () => {
+    this.$target.closest("label").classList.remove("focus");
+  };
+
   this.initEventListeners = () => {
-    console.log(this.$target);
+    cancelBtn.addEventListener("mousedown", handleMouseDown);
+    cancelBtn.addEventListener("click", (e) => {
+      if (e.target.closest(".cancel")) {
+        this.$target.value = "";
+        this.removeFocusClass();
+        return;
+      }
+    });
     this.$target.addEventListener("focus", handleInputFocusChange);
     this.$target.addEventListener("blur", handleInputBlur);
   };
