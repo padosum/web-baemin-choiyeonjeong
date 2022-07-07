@@ -12,6 +12,18 @@ const handlePhoneInputHyphen = (e) => {
     .replace("--", "-");
 };
 
+const isFillInputMaxLength = (target) => {
+  return target.value.length === target.maxLength;
+};
+
+const handleCheckFillInput = (e) => {
+  if (isFillInputMaxLength(e.target)) {
+    e.target.classList.add("filled");
+  } else {
+    e.target.classList.remove("filled");
+  }
+};
+
 function inputEl($page, name) {
   this.$target = $page.querySelector(name);
 
@@ -29,12 +41,18 @@ function inputEl($page, name) {
     initEventListeners();
   };
 
+  this.removeFocus = () => {
+    this.$target.closest("label").classList.remove("focus");
+  };
+
   const initEventListeners = () => {
     this.$target.addEventListener("focus", handleInputFocusChange);
+    this.$target.addEventListener("keyup", handleCheckFillInput);
 
     cancelBtn.addEventListener("click", (e) => {
       if (e.target.closest(".cancel")) {
         this.$target.value = "";
+        this.$target.classList.remove("filled");
         return;
       }
     });
@@ -48,12 +66,12 @@ function inputEl($page, name) {
 }
 
 function certificationPage($target) {
+  const inputPhone = new inputEl($target, "#phone");
+  inputPhone.setEvent("keyup", handlePhoneInputHyphen);
+
+  const certificationNumber = new inputEl($target, "#cNumber");
+
   this.init = () => {
-    const inputPhone = new inputEl($target, "#phone");
-    inputPhone.setEvent("keyup", handlePhoneInputHyphen);
-
-    const certificationNumber = new inputEl($target, "#cNumber");
-
     initEventListeners();
   };
 
@@ -65,13 +83,8 @@ function certificationPage($target) {
         return;
       }
 
-      if (e.target.closest(".cancel")) {
-        e.target.closest("input[type='text']").value = "";
-        return;
-      }
-      for (const input of inputs) {
-        input.closest("label").classList.remove("focus");
-      }
+      inputPhone.removeFocus();
+      certificationNumber.removeFocus();
     });
   };
 }
