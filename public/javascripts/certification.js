@@ -21,9 +21,13 @@ const handleNextPage = () => {
 };
 
 const activeNextPageButton = () => {
-  const checkInputCnt = [...document.querySelectorAll(".filled")].length;
+  const inputPhone = document.querySelector("#phone");
+  const inputCertificationNumber = document.querySelector("#cNumber");
   const nextButton = document.querySelector(".next");
-  if (checkInputCnt === 2) {
+  if (
+    isFillInputMaxLength(inputPhone) &&
+    isFillInputMaxLength(inputCertificationNumber)
+  ) {
     nextButton.disabled = false;
     nextButton.addEventListener("click", handleNextPage);
   } else {
@@ -157,7 +161,9 @@ function CertificationPage($target) {
   };
 }
 
-const page = new CertificationPage(
-  document.querySelector(".certification-wrapper")
-);
-page.init();
+window.addEventListener("DOMContentLoaded", () => {
+  const page = new CertificationPage(
+    document.querySelector(".certification-wrapper")
+  );
+  page.init();
+});
