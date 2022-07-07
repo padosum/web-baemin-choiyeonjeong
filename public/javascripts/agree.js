@@ -9,7 +9,7 @@ const checkAllHandler = (e) => {
 };
 
 const nextPageHandler = () => {
-  window.location.href = "/join/phone";
+  window.location.href = "/join/certification";
 };
 const isEnableNext = () => {
   const essential = document.querySelectorAll(
