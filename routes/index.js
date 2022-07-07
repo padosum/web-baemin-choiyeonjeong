@@ -6,4 +6,4 @@ router.get("/", function (req, res, next) {
   res.render("index", { title: "My배민" });
 });
 
-export { router as indexRouter };
+export default router;

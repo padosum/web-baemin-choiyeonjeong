@@ -5,4 +5,4 @@ router.get("/", (req, res, next) => {
   res.render("login", { title: "Login", bundle: "/login.js" });
 });
 
-export { router as loginRouter };
+export default router;

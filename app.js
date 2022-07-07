@@ -1,4 +1,3 @@
-// var createError = require("http-errors");
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const createError = require("http-errors");
@@ -8,10 +7,10 @@ import cookieParser from "cookie-parser";
 import logger from "morgan";
 import { fileURLToPath } from "url";
 
-import { indexRouter } from "./routes/index.js";
-import { loginRouter } from "./routes/login.js";
-import { joinRouter } from "./routes/join.js";
-import { authRouter } from "./routes/auth.js";
+import indexRouter from "./routes/index.js";
+import loginRouter from "./routes/login.js";
+import joinRouter from "./routes/join.js";
+import authRouter from "./routes/auth.js";
 
 var app = express();
 

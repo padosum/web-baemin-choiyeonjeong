@@ -5,6 +5,30 @@
       "password": "qweqweqwqe",
       "nickname": "woowa",
       "birth": "2000.01.01"
+    },
+    {
+      "email": "mamamam",
+      "password": "`123123",
+      "nickname": "dddd",
+      "birth": "123123123"
+    },
+    {
+      "email": "333",
+      "password": "555",
+      "nickname": "444",
+      "birth": "666"
+    },
+    {
+      "email": "222",
+      "password": "444",
+      "nickname": "333",
+      "birth": "777"
+    },
+    {
+      "email": "gfdgfg",
+      "password": "hgj",
+      "nickname": "asd",
+      "birth": "cvxv"
     }
   ]
 }
