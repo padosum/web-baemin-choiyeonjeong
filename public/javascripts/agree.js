@@ -1,4 +1,4 @@
-const checkAllHandler = (e) => {
+const handleCheckAllCheckBoxes = (e) => {
   const checkboxes = document.querySelectorAll(
     "input[type='checkbox']:not(.checkAll)"
   );
@@ -8,9 +8,10 @@ const checkAllHandler = (e) => {
   });
 };
 
-const nextPageHandler = () => {
+const handleNextPage = () => {
   window.location.href = "/join/certification";
 };
+
 const isEnableNext = () => {
   const essential = document.querySelectorAll(
     "input[type='checkbox']:checked:not(.checkAll):not(.optional"
@@ -26,10 +27,11 @@ const isEnableNext = () => {
   }
   return essential.length >= 3 && checkedRadio;
 };
+
 window.addEventListener("load", () => {
   const checkAll = document.querySelector(".checkAll");
   checkAll.addEventListener("click", (e) => {
-    checkAllHandler(e);
+    handleCheckAllCheckBoxes(e);
   });
 
   const main = document.querySelector("main");
@@ -44,10 +46,10 @@ window.addEventListener("load", () => {
 
       if (isEnableNext()) {
         next.classList.add("enable");
-        next.addEventListener("click", nextPageHandler);
+        next.addEventListener("click", handleNextPage);
       } else {
         next.classList.remove("enable");
-        next.removeEventListener("click", nextPageHandler);
+        next.removeEventListener("click", handleNextPage);
       }
     }
   });
