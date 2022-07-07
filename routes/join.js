@@ -9,8 +9,8 @@ router.get("/certification", (req, res, next) => {
   res.render("certification", { title: "회원가입" });
 });
 
-router.get("/personaldetails", (req, res, next) => {
-  res.send("상세정보");
+router.get("/details", (req, res, next) => {
+  res.render("details", { title: "회원가입" });
 });
 
 module.exports = router;
