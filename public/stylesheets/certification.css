@@ -104,3 +104,17 @@ header .title {
 .certification-wrapper .input-field.focus .cancel {
   display: block;
 }
+
+.certification-wrapper .certification-number {
+  display: none;
+  flex-direction: column;
+}
+
+.certification-wrapper .resend {
+  align-self: flex-end;
+  margin-top: 32px;
+  border: none;
+  background: none;
+  outline: none;
+  color: #2ac1bc;
+}
