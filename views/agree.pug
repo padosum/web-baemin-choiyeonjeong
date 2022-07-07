@@ -1,0 +1,57 @@
+extends layout 
+
+block content 
+    link(rel="stylesheet", href="/stylesheets/agree.css")
+    div.wrapper
+        div.agree-wrapper
+            header 
+                a.cancel-wrapper(href="/")
+                    img.cancel(src="/images/cancel.png")
+                h1.title=title
+            main 
+                div.greeting 
+                    p="어서오세요"
+                    p="약관 동의가 필요해요"
+                div 
+                    label.label 
+                        span="전체동의" 
+                        input.checkbox(type="checkbox")
+                        span.check-mark
+                hr
+                label.label
+                    span="배달의민족 이용약관 동의"
+                    input.checkbox(type="checkbox")
+                    span.check-mark
+                label.label
+                    span="전자금융거래 이용약관 동의"
+                    input.checkbox(type="checkbox")
+                    span.check-mark
+                label.label
+                    span="개인정보 수집이용 동의"
+                    input.checkbox(type="checkbox")
+                    span.check-mark
+                label.label
+                    span="개인정보 제3자 제공 동의 (선택)"
+                    input.checkbox(type="checkbox")
+                    span.check-mark
+                label.label
+                    span="마케팅 정보 메일, SMS 수신동의 (선택)"
+                    input.checkbox(type="checkbox")
+                    span.check-mark
+
+                hr
+                div.age-area
+                    div.select-item
+                        label.label
+                            span="만 14세 이상입니다."
+                            input.radio(type="radio" name="age")
+                            span.radio-mark
+                        img.adult(src='/images/adult.png')
+                    div.select-item.child
+                        label.label
+                            span="만 14세 미만입니다."
+                            input.radio(type="radio" name="age")
+                            span.radio-mark
+                        img.child(src='/images/child.png')
+            footer 
+                button.next(href="/join/phone")="다음으로"

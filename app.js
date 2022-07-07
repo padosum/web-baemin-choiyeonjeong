@@ -6,6 +6,7 @@ var logger = require("morgan");
 
 const indexRouter = require("./routes/index");
 const loginRouter = require("./routes/login");
+const joinRouter = require("./routes/join");
 
 var app = express();
 
@@ -21,6 +22,12 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/login", loginRouter);
+app.post("/login_check", (req, res) => {
+  const id = req.body.id;
+  const pw = req.body.pw;
+  res.send(`id : ${id}, pw: ${pw}`);
+});
+app.use("/join", joinRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
