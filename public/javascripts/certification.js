@@ -16,16 +16,60 @@ const isFillInputMaxLength = (target) => {
   return target.value.length === target.maxLength;
 };
 
+const handleNextPage = () => {
+  window.location.href = "/join/details";
+};
+
+const activeNextPageButton = () => {
+  const checkInputCnt = [...document.querySelectorAll(".filled")].length;
+  const nextButton = document.querySelector(".next");
+  if (checkInputCnt === 2) {
+    nextButton.disabled = false;
+    nextButton.addEventListener("click", handleNextPage);
+  } else {
+    nextButton.disabled = true;
+    nextButton.removeEventListener("click", handleNextPage);
+  }
+};
+
 const handleCheckFillInput = (e) => {
   if (isFillInputMaxLength(e.target)) {
     e.target.classList.add("filled");
   } else {
     e.target.classList.remove("filled");
   }
+
+  activeNextPageButton();
 };
 
-function inputEl($page, name) {
-  this.$target = $page.querySelector(name);
+const fakeSendAction = (callback) => {
+  return setTimeout(() => {
+    callback();
+  }, 2000);
+};
+
+const getRandomCertificationNumber = () => {
+  return Math.floor(1000 + Math.random() * 9000);
+};
+
+function buttonEl($page, selector) {
+  this.$target = $page.querySelector(selector);
+
+  this.init = () => {
+    this.initEventListeners();
+  };
+
+  this.initEventListeners = () => {};
+
+  this.setEvent = (type, listener) => {
+    this.$target.addEventListener(type, listener);
+  };
+
+  this.init();
+}
+
+function inputEl($page, selector) {
+  this.$target = $page.querySelector(selector);
 
   const cancelBtn = document.createElement("button");
   const cancelIcon = document.createElement("img");
@@ -38,16 +82,21 @@ function inputEl($page, name) {
   this.$target.parentNode.insertBefore(cancelBtn, this.$target.nextSibling);
 
   this.init = () => {
-    initEventListeners();
+    this.initEventListeners();
+  };
+
+  this.setValue = (newValue) => {
+    this.$target.value = newValue;
   };
 
   this.removeFocus = () => {
     this.$target.closest("label").classList.remove("focus");
   };
 
-  const initEventListeners = () => {
+  this.initEventListeners = () => {
     this.$target.addEventListener("focus", handleInputFocusChange);
     this.$target.addEventListener("keyup", handleCheckFillInput);
+    this.$target.addEventListener("change", handleCheckFillInput);
 
     cancelBtn.addEventListener("click", (e) => {
       if (e.target.closest(".cancel")) {
@@ -71,13 +120,32 @@ function certificationPage($target) {
 
   const certificationNumber = new inputEl($target, "#cNumber");
 
+  const btnSend = new buttonEl($target, ".send-number");
+  const btnResend = new buttonEl($target, ".resend");
+
+  btnSend.setEvent("click", (e) => {
+    e.preventDefault();
+    certificationNumber.$target.closest(".certification-number").style.display =
+      "block";
+    fakeSendAction(() => {
+      certificationNumber.setValue(getRandomCertificationNumber());
+      certificationNumber.$target.dispatchEvent(new Event("change"));
+    });
+  });
+
+  btnResend.setEvent("click", (e) => {
+    e.preventDefault();
+    fakeSendAction(() => {
+      certificationNumber.setValue(getRandomCertificationNumber());
+      certificationNumber.$target.dispatchEvent(new Event("change"));
+    });
+  });
+
   this.init = () => {
     initEventListeners();
   };
 
   const initEventListeners = () => {
-    const inputs = $target.querySelectorAll("input");
-
     $target.addEventListener("click", (e) => {
       if (e.target.tagName === "INPUT") {
         return;
