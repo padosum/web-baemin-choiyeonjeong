@@ -1,0 +1,87 @@
+.details-wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+}
+
+header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  min-height: 18px;
+}
+
+header img.left {
+  position: absolute;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  left: 0;
+}
+
+header .complete-btn {
+  position: absolute;
+  cursor: pointer;
+  right: 0;
+  color: #d7d7d7;
+}
+
+.join-detail .input-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4rem;
+  gap: 3rem;
+}
+
+.join-detail .input-wrapper label {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  color: #888;
+  font-weight: 600;
+}
+
+.join-detail .input-wrapper label input {
+  border: none;
+  padding: 1rem 0;
+  border-bottom: 1px solid #d7d7d7;
+  outline: none;
+}
+
+.join-detail .input-wrapper label .check-mark {
+  position: absolute;
+  display: block;
+  border-left: 3px solid #d7d7d7;
+  border-bottom: 3px solid #d7d7d7;
+  width: 12px;
+  height: 7px;
+  transform: rotate(-45deg);
+  bottom: 1rem;
+  right: 1px;
+}
+
+.join-detail .input-wrapper label .email-input-wrapper .check-mark {
+  right: 7rem;
+}
+
+.join-detail .email-input-wrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.join-detail .email-input-wrapper .user-email {
+  flex: 1;
+}
+
+.join-detail .email-input-wrapper .validate-btn {
+  border: 1px solid #d7d7d7;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  border-radius: 0.35rem;
+  color: #dadada;
+  cursor: pointer;
+}
