@@ -2,16 +2,19 @@ extends layout
 
 block content 
   link(rel="stylesheet", href="/stylesheets/login.css")
+  script(src="/javascripts/login.js")
   div.wrapper
     div.login-wrapper
       main
         a.cancel-wrapper(href="/")
           img.cancel(src="/images/cancel.png")
-        form.form-login
+        form.form-login(action="login_check" method="post" onsubmit="return validateForm()")
           fieldset.field-login
             legend.hidden="배달의민족 로그인 폼"
-            input.input-login(type="text" placeholder="아이디 또는 이메일")
-            input.input-login(type="passoword" placeholder="비밀번호")
+            input.input-login(type="text" placeholder="아이디 또는 이메일" name="id" id="id")
+            span.text-danger.invalid-id="ID를 입력해주세요."
+            input.input-login(type="passoword" placeholder="비밀번호" name="pw" id="pw")
+            span.text-danger.invalid-pw="비밀번호를 입력해주세요."
           button.button-login(type="submit" value="로그인")="로그인"
         div.info-user
           span

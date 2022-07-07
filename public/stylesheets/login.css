@@ -1,3 +1,7 @@
+:root {
+  --primary-color: #2ac1bc;
+}
+
 .login-wrapper {
   min-height: 700px;
   display: flex;
@@ -28,7 +32,7 @@ main {
   flex-direction: column;
   align-items: center;
   margin-top: 50px;
-  padding: 20px;
+  padding: 8px 20px;
 }
 
 .field-login {
@@ -43,8 +47,21 @@ main {
   border-style: none;
   border-bottom: 1px solid #ebebeb;
 }
+
 .input-login:focus {
   outline: none;
+}
+
+.text-danger {
+  color: red;
+}
+
+.invalid-id {
+  display: none;
+}
+
+.invalid-pw {
+  display: none;
 }
 
 .button-login {
@@ -54,7 +71,7 @@ main {
   margin-top: 30px;
   padding: 0;
   border-radius: 4px;
-  background-color: #2ac1bc;
+  background-color: var(--primary-color);
   color: white;
   font-size: 15px;
   font-weight: 600;
@@ -102,7 +119,7 @@ footer {
   border: 1px solid #000000;
   background-color: white;
   border-radius: 4px;
-  padding: 10px;
+  padding: 8px 20px;
   margin-bottom: 10px;
 }
 
@@ -123,5 +140,5 @@ img.sns {
 
 .join {
   margin-left: 5px;
-  color: #2ac1bc;
+  color: var(--primary-color);
 }
