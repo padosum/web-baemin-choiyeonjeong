@@ -1,0 +1,106 @@
+.certification-wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+}
+
+header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header .title {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.certification-wrapper button {
+  cursor: pointer;
+}
+
+.certification-wrapper header button {
+  position: absolute;
+  padding: 0;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.certification-wrapper header button.back {
+  left: 0;
+}
+
+.certification-wrapper header .next {
+  right: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.certification-wrapper main {
+  display: flex;
+  flex-direction: column;
+}
+
+.certification-wrapper main > *,
+.certification-wrapper main form.phone > * {
+  margin-top: 32px;
+}
+
+.certification-wrapper .send-number {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #eee;
+  background: none;
+  outline: none;
+  border-radius: 4px;
+}
+
+.certification-wrapper .input-field.focus .title {
+  size: 1.1rem;
+  color: #333;
+}
+
+.certification-wrapper .input-field .field {
+  position: relative;
+}
+
+.certification-wrapper .input-field .title {
+  color: #888;
+  transition: color 300ms ease;
+}
+
+.certification-wrapper .input-field input {
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  border-bottom: 1px solid #888;
+  background: none;
+  outline: none;
+  transition: border-bottom-color 300ms ease;
+}
+
+.certification-wrapper .input-field .cancel {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  margin-right: 10px;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.certification-wrapper .input-field .cancel img {
+  width: 100%;
+  height: 100%;
+}
+
+.certification-wrapper .input-field.focus .cancel {
+  display: block;
+}
