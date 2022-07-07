@@ -20,6 +20,7 @@ function inputEl($page, name) {
 
   cancelIcon.src = "/images/cancel-circle.png";
   cancelBtn.classList.add("cancel");
+  cancelBtn.type = "button";
   cancelBtn.appendChild(cancelIcon);
 
   this.$target.parentNode.insertBefore(cancelBtn, this.$target.nextSibling);
