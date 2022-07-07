@@ -6,7 +6,7 @@ router.get("/agree", (req, res, next) => {
 });
 
 router.get("/certification", (req, res, next) => {
-  res.send("휴대폰 인증번호");
+  res.render("certification", { title: "회원가입" });
 });
 
 router.get("/personaldetails", (req, res, next) => {
