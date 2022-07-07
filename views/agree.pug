@@ -2,6 +2,7 @@ extends layout
 
 block content 
     link(rel="stylesheet", href="/stylesheets/agree.css")
+    
     div.wrapper
         div.agree-wrapper
             header 
@@ -15,7 +16,7 @@ block content
                 div 
                     label.label 
                         span="전체동의" 
-                        input.checkbox(type="checkbox")
+                        input.checkbox.checkAll(type="checkbox")
                         span.check-mark
                 hr
                 label.label
@@ -32,11 +33,11 @@ block content
                     span.check-mark
                 label.label
                     span="개인정보 제3자 제공 동의 (선택)"
-                    input.checkbox(type="checkbox")
+                    input.checkbox.optional(type="checkbox")
                     span.check-mark
                 label.label
                     span="마케팅 정보 메일, SMS 수신동의 (선택)"
-                    input.checkbox(type="checkbox")
+                    input.checkbox.optional(type="checkbox")
                     span.check-mark
 
                 hr
@@ -55,3 +56,5 @@ block content
                         img.child(src='/images/child.png')
             footer 
                 button.next(href="/join/phone")="다음으로"
+
+    script(src="/javascripts/agree.js")
