@@ -52,7 +52,7 @@ const getRandomCertificationNumber = () => {
   return Math.floor(1000 + Math.random() * 9000);
 };
 
-function buttonEl($page, selector) {
+function ButtonEl($page, selector) {
   this.$target = $page.querySelector(selector);
 
   this.init = () => {
@@ -68,7 +68,7 @@ function buttonEl($page, selector) {
   this.init();
 }
 
-function inputEl($page, selector) {
+function InputEl($page, selector) {
   this.$target = $page.querySelector(selector);
 
   const cancelBtn = document.createElement("button");
@@ -114,14 +114,14 @@ function inputEl($page, selector) {
   this.init();
 }
 
-function certificationPage($target) {
-  const inputPhone = new inputEl($target, "#phone");
+function CertificationPage($target) {
+  const inputPhone = new InputEl($target, "#phone");
   inputPhone.setEvent("keyup", handlePhoneInputHyphen);
 
-  const certificationNumber = new inputEl($target, "#cNumber");
+  const certificationNumber = new InputEl($target, "#cNumber");
 
-  const btnSend = new buttonEl($target, ".send-number");
-  const btnResend = new buttonEl($target, ".resend");
+  const btnSend = new ButtonEl($target, ".send-number");
+  const btnResend = new ButtonEl($target, ".resend");
 
   btnSend.setEvent("click", (e) => {
     e.preventDefault();
@@ -157,7 +157,7 @@ function certificationPage($target) {
   };
 }
 
-const page = new certificationPage(
+const page = new CertificationPage(
   document.querySelector(".certification-wrapper")
 );
 page.init();
