@@ -2,6 +2,10 @@ const handleInputFocusChange = (e) => {
   e.target.closest("label").classList.add("focus");
 };
 
+const handleInputBlur = (e) => {
+  e.target.closest("label").classList.remove("focus");
+};
+
 function InputEl($page, selector) {
   this.$target = $page.querySelector(selector);
 
@@ -20,12 +24,16 @@ function InputEl($page, selector) {
   };
 
   this.initEventListeners = () => {
+    console.log(this.$target);
     this.$target.addEventListener("focus", handleInputFocusChange);
+    this.$target.addEventListener("blur", handleInputBlur);
   };
 
   this.getValue = () => {
     return this.$target.value;
   };
+
+  this.init();
 }
 
 function DetailsPage($target) {
