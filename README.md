@@ -1,4 +1,5 @@
-# baemin-choiyeonjeong
+# 배달의민족 회원가입 페이지
+- 회원가입, 로그인, 로그아웃
 
 ## Screenshots
 <img width="406" alt="Screen Shot 2022-07-08 at 10 40 00 AM" src="https://user-images.githubusercontent.com/6129764/177899560-2d46272f-b45e-4115-b392-ffea013cd2a3.png">
