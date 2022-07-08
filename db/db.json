@@ -30,5 +30,42 @@
       "nickname": "asd",
       "birth": "cvxv"
     }
+  ],
+  "sessions": [
+    {
+      "sessionId": "aa9f66f5-a5a0-4883-b4bb-c70a039a2c85",
+      "userInfo": {
+        "id": "woowa@woowafriends.com",
+        "name": "woowa"
+      }
+    },
+    {
+      "sessionId": "09a55a7e-2579-4ba2-aa9d-52dd21c1acae",
+      "userInfo": {
+        "id": "333",
+        "name": "444"
+      }
+    },
+    {
+      "sessionId": "bedc9768-99a2-4b97-a878-ed2a128c9169",
+      "userInfo": {
+        "id": "333",
+        "name": "444"
+      }
+    },
+    {
+      "sessionId": "01380bcb-9978-4bde-a9d4-3bb1a693a4e3",
+      "userInfo": {
+        "id": "333",
+        "name": "444"
+      }
+    },
+    {
+      "sessionId": "d4457342-1839-4ccf-a7aa-2bb974026dc4",
+      "userInfo": {
+        "id": "333",
+        "name": "444"
+      }
+    }
   ]
 }

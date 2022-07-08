@@ -42,7 +42,6 @@ window.addEventListener("DOMContentLoaded", () => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         if (res.success) {
           window.location = "/";
         } else {

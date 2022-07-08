@@ -1,6 +1,6 @@
 import express from "express";
 import db from "../db/db.js";
-
+import session from "../public/javascripts/session.js";
 const router = express.Router();
 
 router.post("/register_process", async (req, res, next) => {
@@ -22,21 +22,32 @@ router.post("/register_process", async (req, res, next) => {
   res.sendStatus(200);
 });
 
+router.get("/logout", (req, res, next) => {
+  res.cookie("loginSession", "", {
+    maxAge: 0,
+    httpOnly: true,
+  });
+
+  res.redirect("/");
+});
 router.post("/login_check", async (req, res, next) => {
   const { body } = req;
   const { id, password } = body;
 
   await db.read();
 
-  console.log(db.data);
-
   const findUser = db.data.users.find(
     (user) => user.email === id && user.password === password
   );
 
   if (findUser) {
+    const sessionId = session.generateSessionID();
+    session.addSession(sessionId, findUser.email, findUser.nickname);
+
+    res.cookie("loginSession", sessionId);
     res.json({
       success: true,
+      name: findUser.name,
     });
   } else {
     res.json({
