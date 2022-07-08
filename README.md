@@ -1,5 +1,12 @@
 # baemin-choiyeonjeong
 
+## Screenshots
+<img width="406" alt="Screen Shot 2022-07-08 at 10 40 00 AM" src="https://user-images.githubusercontent.com/6129764/177899560-2d46272f-b45e-4115-b392-ffea013cd2a3.png">
+<img width="405" alt="Screen Shot 2022-07-08 at 10 40 09 AM" src="https://user-images.githubusercontent.com/6129764/177899575-ce1e790b-5f47-425c-ad4b-cdc1e5587939.png">
+<img width="404" alt="Screen Shot 2022-07-08 at 10 40 19 AM" src="https://user-images.githubusercontent.com/6129764/177899577-b6bafba6-9091-4cd4-afe3-a34455c6670a.png">
+<img width="405" alt="Screen Shot 2022-07-08 at 10 40 39 AM" src="https://user-images.githubusercontent.com/6129764/177899579-aecd0ed0-b34f-4ea3-87de-4ec4d7b41ef6.png">
+<img width="404" alt="Screen Shot 2022-07-08 at 10 40 48 AM" src="https://user-images.githubusercontent.com/6129764/177899581-4c04a5d2-594c-4f68-a095-b20a27d1eb8a.png">
+
 ## TODO
 ### 초기화면
 - [ ] UI
