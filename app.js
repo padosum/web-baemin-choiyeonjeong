@@ -29,11 +29,6 @@ app.use("/db", express.static(path.join(__dirname, "db")));
 
 app.use("/", indexRouter);
 app.use("/login", loginRouter);
-app.post("/login_check", (req, res) => {
-  const id = req.body.id;
-  const pw = req.body.pw;
-  res.send(`id : ${id}, pw: ${pw}`);
-});
 app.use("/join", joinRouter);
 app.use("/auth", authRouter);
 
