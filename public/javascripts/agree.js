@@ -28,7 +28,7 @@ const isEnableNext = () => {
   return essential.length >= 3 && checkedRadio;
 };
 
-window.addEventListener("load", () => {
+window.addEventListener("DOMContentLoaded", () => {
   const checkAll = document.querySelector(".checkAll");
   checkAll.addEventListener("click", (e) => {
     handleCheckAllCheckBoxes(e);
