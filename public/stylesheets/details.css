@@ -1,0 +1,131 @@
+.details-wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+}
+
+header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  min-height: 18px;
+}
+
+header img.left {
+  position: absolute;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  left: 0;
+}
+
+header .complete-btn {
+  cursor: pointer;
+  position: absolute;
+  padding: 0;
+  border: none;
+  background: none;
+  outline: none;
+  right: 0;
+  /* color: #d7d7d7; */
+}
+
+.join-detail .input-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4rem;
+  gap: 3rem;
+}
+
+.join-detail .input-wrapper label {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.join-detail .input-wrapper label input {
+  border: none;
+  padding: 1rem 0;
+  border-bottom: 1px solid #d7d7d7;
+  outline: none;
+  width: 100%;
+}
+
+.join-detail .input-wrapper label .check-mark {
+  position: absolute;
+  display: block;
+  border-left: 3px solid #d7d7d7;
+  border-bottom: 3px solid #d7d7d7;
+  width: 12px;
+  height: 7px;
+  transform: rotate(-45deg);
+  bottom: 1.5rem;
+  right: 1px;
+}
+
+.join-detail .input-wrapper label .email-input-wrapper .check-mark {
+  right: 1rem;
+}
+
+.join-detail .email-validate-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.join-detail .input-field .title {
+  color: #888;
+  transition: color 300ms ease;
+}
+
+.join-detail .input-field.focus .title {
+  size: 1.1rem;
+  color: #333;
+}
+
+.join-detail .input-field .field {
+  display: flex;
+  align-items: center;
+}
+
+.join-detail .email-validate-wrapper .email-input-wrapper {
+  position: relative;
+  flex-grow: 1;
+  gap: 1rem;
+}
+
+.join-detail .email-validate-wrapper .email-input-wrapper .user-email {
+  flex: 1;
+}
+
+.join-detail .input-field .cancel {
+  position: absolute;
+  right: 1.5rem;
+  display: none;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  margin-right: 10px;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.join-detail .input-field .cancel img {
+  width: 100%;
+  height: 100%;
+}
+
+.join-detail .input-field.focus .cancel {
+  display: block;
+}
+
+.join-detail .email-validate-wrapper .validate-btn {
+  border: 1px solid #d7d7d7;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  border-radius: 0.35rem;
+  color: #dadada;
+  cursor: pointer;
+}

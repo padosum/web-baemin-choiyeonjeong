@@ -1,0 +1,30 @@
+extends layout 
+
+block content
+    link(rel="stylesheet", href="/stylesheets/certification.css")
+
+    div.wrapper 
+        div.certification-wrapper 
+            header 
+                button.back(type="button")
+                    img(src="/images/arrow-left.svg")
+                h1.title=title
+                button.next(type="button" disabled)="다음"
+            main 
+                form.phone
+                    label.input-field(for="phone")
+                      div.title="휴대전화"
+                      div.field
+                        input(type="text" id="phone" name="phone" placeholder="전화번호를 입력해주세요" maxlength="13")
+                        span.check-mark
+                    button.send-number(type="submit")="인증번호 받기"
+
+                div.certification-number
+                    label.input-field(for="cNumber") 
+                        div.title="인증번호"
+                        div.field
+                            input(type="text" id="cNumber" name="cNumber" placeholder="인증번호를 입력해주세요" maxlength="4")
+                            span.check-mark
+                    button.resend="인증번호 다시받기"
+
+    script(src="/javascripts/certification.js")

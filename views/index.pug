@@ -1,0 +1,49 @@
+extends layout
+
+block content
+  link(rel='stylesheet', href='/stylesheets/index.css')
+  div.wrapper
+    header
+      h1.title= title
+    img.banner(src='/images/banner.png')
+    if name 
+      a.login-anchor(href="javascript:if(confirm('로그아웃하시겠습니까?')){window.location.href='/auth/logout'}") 
+        img.avatar(src='/images/user.png')
+        p #{name}님 안녕하세요
+        img.arrow(src='/images/arrow.png')
+    else
+      a.login-anchor(href="/login") 
+        img.avatar(src='/images/user.png')
+        p='로그인해주세요'
+        img.arrow(src='/images/arrow.png')
+    - const menuItems = [{imgSrc: '/images/point.png', label: '포인트'}, {imgSrc: '/images/coupon.png', label: '쿠폰함'}, {imgSrc: '/images/present.png', label: '선물함'}, {imgSrc: '/images/cart.png', label: '찜'}, {imgSrc: '/images/order.png', label: '주문내역'}, {imgSrc: '/images/review.png', label: '리뷰관리'}]
+    ul.menu-grid  
+      each menuItem in menuItems 
+        li
+          img.grid-item(src=menuItem.imgSrc)
+          p=menuItem.label
+    ul.menu-list 
+      li
+        img.grid-item(src='/images/root.png')
+        p='일회용품 덜 쓰기, 함께해요!'
+        img.arrow(src='/images/arrow.png')
+      li
+        div 
+          div.row
+            p='배민페이 등록'
+            img.new(src='/images/new.png')
+          p.description='배민페이로 결제하면 최대 5.5%의 배민포인트가 적립됩니다!'
+        img.arrow(src='/images/arrow.png')
+      li
+        div 
+          div.row
+            p='가족계정 관리'
+            img.new(src='/images/new.png')
+          p.description='결제수단을 공유해 우리 가족의 끼니를 챙겨주세요.'
+        img.arrow(src='/images/arrow.png')
+      li
+        p='공지사항'
+        img.arrow(src='/images/arrow.png')
+      li
+        p='배민커넥트 지원'
+        img.arrow(src='/images/arrow.png')
