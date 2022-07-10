@@ -15,15 +15,6 @@ const checkSessionExist = async (req, res, next) => {
 
 /* GET home page. */
 router.get("/", checkSessionExist, (req, res, next) => {
-  // if (!req.isLogin) {
-  //   res.join({ result: "none" });
-  // }
-
-  // res.json({
-  //   result: "find",
-  //   name: req.name,
-  // });
-
   res.render("index", { title: "My배민", name: req.name });
 });
 
