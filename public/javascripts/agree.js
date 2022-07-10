@@ -30,9 +30,7 @@ const isEnableNext = () => {
 
 window.addEventListener("DOMContentLoaded", () => {
   const checkAll = document.querySelector(".checkAll");
-  checkAll.addEventListener("click", (e) => {
-    handleCheckAllCheckBoxes(e);
-  });
+  checkAll.addEventListener("click", handleCheckAllCheckBoxes);
 
   const main = document.querySelector("main");
   main.addEventListener("click", (e) => {

@@ -12,31 +12,18 @@ block content
             section.join-detail 
                 form(action="/auth/register_process" method="POST") 
                     div.input-wrapper
-                        label.input-field(for="email")
-                            div.title="이메일"
-                            div.email-validate-wrapper
-                                div.field.email-input-wrapper
-                                    input.user-email(name="email" id="email" placeholder="예시) baemin@woowahan.com")
-                                    p.invalid-message 
-                                    span.check-mark
-                                div.validate-btn="중복확인"
-
-                        label.input-field(for="nickname")
-                            div.title="닉네임"
-                            div.field
-                                input.user-nickname(type="text" name="nickname" id="nickname" placeholder="예시) baebae")
+                        - const inputFields = [{label: 'email', title: '이메일', type: 'text', placeholder: '예시) baemin@woowahan.com'}, {label: 'nickname', title: '닉네임', type: 'text', placeholder: '예시) baebae' },{label: 'password', title: '비밀번호', type: 'password', placeholder: '10자 이상 영어 대문자, 소문자, 특수문자 중 2종류 조합' },{label: 'birth', title: '생년월일', type: 'text', placeholder: '예시) 2000.01.01' }]
+                        each inputField in inputFields
+                            label.input-field(for=inputField.label class=`input-field${inputField.label !== 'email' ? ' hidden' : ''}`) 
+                                div.title=inputField.title 
+                                div.field-wrapper(class=`${inputField.label}-wrapper`)
+                                    div(class=`field`)
+                                        input(class=`user-${inputField.label}` type=inputField.type name=inputField.label id=inputField.label placeholder=inputField.placeholder)
+                                        button(class="cancel" type="button" tabIndex=-1)
+                                            img(src="/images/cancel-circle.png")
+                                        span.check-mark
+                                    if inputField.label === 'email' 
+                                        div.validate-btn="중복확인"
                                 p.invalid-message 
-                                span.check-mark 
-                        label.input-field(for="password")
-                            div.title="비밀번호"
-                            div.field
-                                input.user-password(type="password" name="password" id="password" placeholder="10자 이상 영어 대문자, 소문자, 특수문자 중 2종류 조합")
-                                p.invalid-message 
-                                span.check-mark
-                        label.input-field(for="birth")
-                            div.title="생년월일"
-                            div.field
-                                input.user-birth(name="birth" id="birth" placeholder="예시) 2000.01.01")
-                                p.invalid-message 
-                                span.check-mark
-    script(src="/javascripts/details.js")
+                                    
+    script(type="module" src="/javascripts/detailsPage.js")
