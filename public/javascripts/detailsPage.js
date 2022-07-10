@@ -6,6 +6,28 @@ document.addEventListener("DOMContentLoaded", () => {
   page.init();
 });
 
+const handleCompleteBtn = (e) => {
+  try {
+    registerUser({
+      email: inputEmal.getValue(),
+      nickname: inputNickname.getValue(),
+      password: inputPassword.getValue(),
+      birth: inputBirth.getValue(),
+    });
+  } catch (error) {
+    console.error("회원가입 중 오류가 발생했습니다", error);
+  }
+};
+
+const handleValidateBtn = (e, inputFields) => {
+  const { inputEmail } = inputFields;
+  inputEmail.addClass("filled");
+
+  for (let inputField in inputFields) {
+    inputFields[inputField].removeClass("hidden");
+  }
+};
+
 const registerUser = async (userInfo) => {
   const { response } = await Api.registerUser(userInfo);
 
@@ -17,24 +39,22 @@ const registerUser = async (userInfo) => {
 };
 
 function DetailsPage($target) {
-  const inputEmal = new InputField($target, "#email");
+  const inputEmail = new InputField($target, "#email");
   const inputNickname = new InputField($target, "#nickname");
   const inputPassword = new InputField($target, "#password");
   const inputBirth = new InputField($target, "#birth");
 
   this.init = () => {
-    const button = document.querySelector(".complete-btn");
-    button.addEventListener("click", (e) => {
-      try {
-        registerUser({
-          email: inputEmal.getValue(),
-          nickname: inputNickname.getValue(),
-          password: inputPassword.getValue(),
-          birth: inputBirth.getValue(),
-        });
-      } catch (error) {
-        console.error("회원가입 중 오류가 발생했습니다", error);
-      }
-    });
+    const completeBtn = $target.querySelector(".complete-btn");
+    const validateBtn = $target.querySelector(".validate-btn");
+    completeBtn.addEventListener("click", handleCompleteBtn);
+    validateBtn.addEventListener("click", (e) =>
+      handleValidateBtn(e, {
+        inputEmail,
+        inputNickname,
+        inputPassword,
+        inputBirth,
+      })
+    );
   };
 }

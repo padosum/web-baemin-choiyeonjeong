@@ -14,7 +14,7 @@ block content
                     div.input-wrapper
                         - const inputFields = [{label: 'email', title: '이메일', type: 'text', placeholder: '예시) baemin@woowahan.com'}, {label: 'nickname', title: '닉네임', type: 'text', placeholder: '예시) baebae' },{label: 'password', title: '비밀번호', type: 'password', placeholder: '10자 이상 영어 대문자, 소문자, 특수문자 중 2종류 조합' },{label: 'birth', title: '생년월일', type: 'text', placeholder: '예시) 2000.01.01' }]
                         each inputField in inputFields
-                            label.input-field(for=inputField.label) 
+                            label.input-field(for=inputField.label class=`input-field${inputField.label !== 'email' ? ' hidden' : ''}`) 
                                 div.title=inputField.title 
                                 div.field-wrapper(class=`${inputField.label}-wrapper`)
                                     div(class=`field`)

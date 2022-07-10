@@ -17,8 +17,11 @@ function InputField($page, selector) {
     this.initEventListeners();
   };
 
-  this.removeFocusClass = () => {
-    this.$target.closest("label").classList.remove("focus");
+  this.addClass = (className) => {
+    this.$target.classList.add(className);
+  };
+  this.removeClass = (className) => {
+    this.$target.closest("label").classList.remove(className);
   };
 
   this.getValue = () => {
@@ -38,7 +41,7 @@ function InputField($page, selector) {
     cancelBtn.addEventListener("click", (e) => {
       if (e.target.closest(".cancel")) {
         this.setValueEmpty();
-        this.removeFocusClass();
+        this.removeClass("focus");
         return;
       }
     });
