@@ -2,13 +2,13 @@ extends layout
 
 block content 
   link(rel="stylesheet", href="/stylesheets/login.css")
-  script(src="/javascripts/login.js")
+  
   div.wrapper
     div.login-wrapper
       main
         a.cancel-wrapper(href="/")
           img.cancel(src="/images/cancel.png")
-        form.form-login(action="/auth/login_check" method="post" onsubmit="return validateForm()")
+        form.form-login(action="/auth/login_check" method="post")
           fieldset.field-login
             legend.hidden="배달의민족 로그인 폼"
             input.input-login(type="text" placeholder="아이디 또는 이메일" name="id" id="id")
@@ -36,4 +36,5 @@ block content
         div.information 
           span="혹시, 배달의민족이 처음이신가요?"
           a.join(href="/join/agree")="회원가입"
-            
+
+  script(type="module" src="/javascripts/login.js")     

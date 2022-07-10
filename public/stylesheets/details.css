@@ -62,14 +62,14 @@ header .complete-btn {
   height: 7px;
   transform: rotate(-45deg);
   bottom: 1.5rem;
-  right: 1px;
+  right: 0.5rem;
 }
 
-.join-detail .input-wrapper label .email-input-wrapper .check-mark {
-  right: 1rem;
+.join-detail .input-wrapper label .email-wrapper .check-mark {
+  right: 6.5rem;
 }
 
-.join-detail .email-validate-wrapper {
+.join-detail .user-email-wrapper {
   display: flex;
   align-items: center;
 }
@@ -84,15 +84,25 @@ header .complete-btn {
   color: #333;
 }
 
-.join-detail .input-field .field {
+.join-detail .input-field .field-wrapper.email-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex-grow: 1;
+  gap: 1rem;
+}
+
+.join-detail .input-field .field-wrapper.email-wrapper .field {
+  flex-grow: 1;
+}
+
+.join-detail .field {
   display: flex;
   align-items: center;
 }
 
-.join-detail .email-validate-wrapper .email-input-wrapper {
-  position: relative;
-  flex-grow: 1;
-  gap: 1rem;
+.join-detail .field .user-email {
+  flex: 1;
 }
 
 .join-detail .email-validate-wrapper .email-input-wrapper .user-email {
@@ -101,7 +111,7 @@ header .complete-btn {
 
 .join-detail .input-field .cancel {
   position: absolute;
-  right: 1.5rem;
+  right: 1rem;
   display: none;
   width: 16px;
   height: 16px;
@@ -110,6 +120,10 @@ header .complete-btn {
   border: none;
   background: none;
   outline: none;
+}
+
+.join-detail .input-field .email-wrapper .cancel {
+  right: 7rem;
 }
 
 .join-detail .input-field .cancel img {
@@ -121,7 +135,7 @@ header .complete-btn {
   display: block;
 }
 
-.join-detail .email-validate-wrapper .validate-btn {
+.join-detail .validate-btn {
   border: 1px solid #d7d7d7;
   padding: 0.5rem 1rem;
   font-weight: 500;

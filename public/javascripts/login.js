@@ -1,7 +1,4 @@
-const toggleValidateMessage = (name, setVisible) => {
-  const [el] = [...document.getElementsByName(name)];
-  el.nextElementSibling.style.display = setVisible ? "block" : "none";
-};
+import Api from "../../api/index.js";
 
 const validateForm = () => {
   const id = document.querySelector("#id").value;
@@ -12,6 +9,21 @@ const validateForm = () => {
 
   if (id === "" || pw === "") {
     return false;
+  }
+  return true;
+};
+
+const toggleValidateMessage = (name, setVisible) => {
+  const [el] = [...document.getElementsByName(name)];
+  el.nextElementSibling.style.display = setVisible ? "block" : "none";
+};
+
+const login = async (userInfo) => {
+  const { success, message } = await Api.loginUser(userInfo);
+  if (!success) {
+    alert(message);
+  } else {
+    window.location = "/";
   }
 };
 
@@ -27,29 +39,15 @@ window.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const id = document.querySelector("#id").value;
-    const password = document.querySelector("#pw").value;
-
-    fetch("/auth/login_check", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id,
-        password,
-      }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.success) {
-          window.location = "/";
-        } else {
-          alert(res.message);
-        }
-      })
-      .catch((error) => {
-        console.error(new Error("로그인 중 에러 발생"));
-      });
+    try {
+      if (!validateForm()) {
+        return false;
+      }
+      const id = document.querySelector("#id").value;
+      const password = document.querySelector("#pw").value;
+      login({ id, password });
+    } catch (error) {
+      console.error(new Error("로그인 중 에러가 발생했습니다."));
+    }
   });
 });
