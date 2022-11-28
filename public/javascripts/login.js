@@ -18,25 +18,28 @@ const toggleValidateMessage = (name, setVisible) => {
   el.nextElementSibling.style.display = setVisible ? "block" : "none";
 };
 
-const login = async (userInfo) => {
-  const { success, message } = await Api.loginUser(userInfo);
+const login = async userInfo => {
+  const {
+    data: { success, message },
+  } = await Api.loginUser(userInfo);
+
   if (!success) {
     alert(message);
   } else {
-    window.location = "/";
+    location.href = "/";
   }
 };
 
 window.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector(".form-login");
-  form.addEventListener("keyup", (e) => {
+  form.addEventListener("keyup", e => {
     if (e.target.tagName === "INPUT") {
       toggleValidateMessage(e.target.name, e.target.value === "");
       return;
     }
   });
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", e => {
     e.preventDefault();
 
     try {
