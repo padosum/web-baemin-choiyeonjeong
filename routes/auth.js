@@ -4,22 +4,26 @@ import session from "../public/javascripts/session.js";
 const router = express.Router();
 
 router.post("/register_process", async (req, res, next) => {
-  const { body: user } = req;
-  const { email, password, nickname, birth } = user;
+  try {
+    const { body: user } = req;
+    const { email, password, nickname, birth } = user;
 
-  await db.read();
+    await db.read();
 
-  db.data ||= { users: [] };
+    db.data ||= { users: [] };
 
-  db.data.users.push({
-    email,
-    password,
-    nickname,
-    birth,
-  });
+    db.data.users.push({
+      email,
+      password,
+      nickname,
+      birth,
+    });
 
-  await db.write();
-  res.sendStatus(200);
+    await db.write();
+    res.status(200).send({ message: "회원가입이 완료되었습니다." });
+  } catch (err) {
+    next(err);
+  }
 });
 
 router.get("/logout", (req, res, next) => {
@@ -30,6 +34,7 @@ router.get("/logout", (req, res, next) => {
 
   res.redirect("/");
 });
+
 router.post("/login_check", async (req, res, next) => {
   const { body } = req;
   const { id, password } = body;
@@ -37,7 +42,7 @@ router.post("/login_check", async (req, res, next) => {
   await db.read();
 
   const findUser = db.data.users.find(
-    (user) => user.email === id && user.password === password
+    user => user.email === id && user.password === password
   );
 
   if (findUser) {
