@@ -4,24 +4,25 @@ const URLS = {
 };
 
 const request = async (url, data) => {
-  try {
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
 
-    if (!response.ok) {
-      console.error(response.status, response.statusText);
-    }
+  const { status, ok } = response;
 
-    return response.json();
-  } catch (err) {
-    console.error(err);
-    return false;
+  let result;
+  if (ok) {
+    result = await response.json();
   }
+
+  return {
+    status,
+    data: result,
+  };
 };
 
 const Api = {
