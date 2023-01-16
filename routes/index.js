@@ -4,7 +4,8 @@ const router = express.Router();
 
 const checkSessionExist = async (req, res, next) => {
   const s = await session.findSession(req.cookies.loginSession);
-  if (s) {
+
+  if (s && s.expires > new Date().getTime()) {
     req.isLogin = true;
     req.name = s.userInfo.name;
   } else {

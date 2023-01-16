@@ -47,9 +47,15 @@ router.post("/login_check", async (req, res, next) => {
 
   if (findUser) {
     const sessionId = session.generateSessionID();
-    session.addSession(sessionId, findUser.email, findUser.nickname);
-
-    res.cookie("loginSession", sessionId);
+    const expires = new Date();
+    expires.setMinutes(expires.getMinutes() + 5);
+    session.addSession({
+      sessionId,
+      expires,
+      id: findUser.email,
+      name: findUser.nickname,
+    });
+    res.cookie("loginSession", sessionId, { expires });
     res.json({
       success: true,
       name: findUser.name,
