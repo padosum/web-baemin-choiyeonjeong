@@ -16,10 +16,11 @@ const createUUID = () => {
 };
 
 const session = {
-  async addSession(sessionId, id, name) {
+  async addSession({ sessionId, expires, id, name }) {
     await db.read();
     db.data.sessions.push({
       sessionId,
+      expires: expires.getTime(),
       userInfo: {
         id,
         name,
@@ -30,11 +31,14 @@ const session = {
   },
   async findSession(id) {
     await db.read();
-    const session = db.data.sessions.find((s) => s.sessionId === id);
+    const session = db.data.sessions.find(s => s.sessionId === id);
     return session ? session : false;
   },
   async deleteSession(id) {
     await db.read();
+    const sessionIdx = db.data.sessions.findIndex(s => s.sessionId === id);
+    db.data.sessions.splice(sessionIdx, 1);
+    await db.write();
   },
   generateSessionID() {
     return createUUID();
